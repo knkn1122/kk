@@ -1,0 +1,8 @@
+{
+  "name": "mothers-day-letter-book",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
