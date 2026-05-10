@@ -51,3 +51,14 @@ test("tarot markup includes section titles and card details", async () => {
   assert.match(markup, /正位/);
   assert.match(markup, /逆位/);
 });
+
+test("tarot markup exposes anchor ids for each tarot group", async () => {
+  const deck = expandTarotDeck(await loadDeck());
+  const markup = createTarotMarkup(deck);
+
+  assert.match(markup, /id="tarot-group-major"/);
+  assert.match(markup, /id="tarot-group-wands"/);
+  assert.match(markup, /id="tarot-group-cups"/);
+  assert.match(markup, /id="tarot-group-swords"/);
+  assert.match(markup, /id="tarot-group-pentacles"/);
+});

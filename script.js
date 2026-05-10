@@ -43,9 +43,23 @@ function applyFilter(filter) {
   });
 }
 
+function scrollToTarotGroup(filter) {
+  if (filter === "all") {
+    tarotContent.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  const targetGroup = tarotContent.querySelector(`#tarot-group-${filter}`);
+  targetGroup?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function bindTarotTabs() {
   tarotTabs.forEach((tab) => {
-    tab.addEventListener("click", () => applyFilter(tab.dataset.filter));
+    tab.addEventListener("click", () => {
+      const filter = tab.dataset.filter;
+      applyFilter(filter);
+      scrollToTarotGroup(filter);
+    });
   });
 }
 

@@ -109,7 +109,7 @@ export function createTarotMarkup(deck) {
   return SECTION_META.map((section) => {
     const cards = grouped[section.key];
     return `
-      <section class="tarot-group" data-group="${section.key}">
+      <section class="tarot-group" id="tarot-group-${section.key}" data-group="${section.key}">
         <header class="tarot-group__header">
           <p class="eyebrow">${section.title}</p>
           <h3>${section.title}</h3>

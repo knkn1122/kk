@@ -296,6 +296,25 @@ main {
   line-height: 1.9;
 }
 
+.letter-sheet__scroll {
+  display: block;
+  max-height: min(56vh, 360px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 161, 107, 0.45) transparent;
+}
+
+.letter-sheet__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.letter-sheet__scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(201, 161, 107, 0.45);
+}
+
 .signature {
   text-align: right;
   color: var(--muted);
@@ -306,7 +325,7 @@ main {
 }
 
 .envelope.is-open .letter-sheet {
-  max-height: 680px;
+  max-height: 520px;
   transform: translateX(-50%) translateY(-34px);
 }
 
@@ -381,6 +400,7 @@ main {
 .tarot-group {
   display: grid;
   gap: 14px;
+  scroll-margin-top: 20px;
 }
 
 .tarot-group__header h3 {
