@@ -16,6 +16,11 @@ async function loadDeck() {
   return JSON.parse(raw);
 }
 
+async function loadIndexHtml() {
+  const indexPath = new URL("../index.html", import.meta.url);
+  return readFile(indexPath, "utf8");
+}
+
 test("tarot deck contains a valid 78-card structure", async () => {
   const deck = expandTarotDeck(await loadDeck());
 
@@ -61,4 +66,12 @@ test("tarot markup exposes anchor ids for each tarot group", async () => {
   assert.match(markup, /id="tarot-group-cups"/);
   assert.match(markup, /id="tarot-group-swords"/);
   assert.match(markup, /id="tarot-group-pentacles"/);
+});
+
+test("letter section keeps a dedicated scroll container outside button markup", async () => {
+  const html = await loadIndexHtml();
+
+  assert.match(html, /class="envelope" role="button" tabindex="0"/);
+  assert.match(html, /class="letter-sheet__scroll"/);
+  assert.doesNotMatch(html, /<button class="envelope"/);
 });

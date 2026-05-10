@@ -19,6 +19,12 @@ function bindEnvelope() {
       openEnvelope();
     }
   });
+  envelope?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openEnvelope();
+    }
+  });
 }
 
 function bindTarotCards() {
@@ -36,10 +42,6 @@ function bindTarotCards() {
 function applyFilter(filter) {
   tarotTabs.forEach((tab) => {
     tab.classList.toggle("is-active", tab.dataset.filter === filter);
-  });
-
-  tarotContent.querySelectorAll(".tarot-group").forEach((group) => {
-    group.hidden = filter !== "all" && group.dataset.group !== filter;
   });
 }
 
